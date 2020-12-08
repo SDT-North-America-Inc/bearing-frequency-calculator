@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Bearing Frequency Calculator</title>
+  </head>
+  <body>
+     <!-- Just an image -->
+    <nav class="navbar navbar-light" style="background-color: #002745;"">
+        <div class="container">
+        <a class="navbar-brand" href="https://sdt.training">
+            <img src="/images/logo.png" alt="SDT Training" height="35">
+        </a>
+        </div>
+    </nav>
+    <div class="container" style="margin-top: 150px;">
+        <h2 class="display text-center">
+            Bearing Frequency Calculator
+        </h2>
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-sm">
+                <label for="inputShaftRPM" class="form-label">Shaft Turning Speed (RPM)</label>
+                <input type="text" class="form-control" id="inputShaftRPM" name="inputShaftRPM" value="425">      
+            </div>
+
+            <div class="col-sm">
+                <label for="inputFTF" class="form-label">FTF (cage freq.)</label>
+                <input type="text" class="form-control" id="inputFTF" name="inputFTF" value="0.425">      
+            </div>
+
+            <div class="col-sm">
+                <label for="inputBSF" class="form-label">BSF (ball spin freq.)</label>
+                <input type="text" class="form-control" id="inputBSF" name="inputBSF" value="2.984">      
+            </div>
+
+            <div class="col-sm">
+                <label for="inputBPFO" class="form-label">BPFO (outer race freq.)</label>
+                <input type="text" class="form-control" id="inputBPFO" name="inputBPFO" value="5.324">      
+            </div>
+
+            <div class="col-sm">
+                <label for="inputBPFI" class="form-label">BPFI (inner race freq.)</label>
+                <input type="text" class="form-control" id="inputBPFI" name="inputBPFI" value="8.307">      
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 35px;">
+            <div class="col-sm text-left">
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 35px;">
+          <div class="col-sm">
+            <p class="font-weight-bold">
+
+            </p>
+          </div>
+          <div class="col-sm text-center" style="color:#002745; border-bottom: 1px solid #002745;">
+            <h4 class="font-weight-bold">
+                Frequency Per Minute
+            </h4>
+          </div>
+          <div class="col-sm text-center" style="color:#002745; border-bottom: 1px solid #002745;">
+            <h4 class="font-weight-bold">
+                Frequency Per Second or Hertz
+            </h4>
+          </div>
+          <div class="col-sm text-center" style="color:#002745; border-bottom: 1px solid #002745;">
+            <h4 class="font-weight-bold">
+                Time Between Events
+            </h4>
+          </div>
+        </div>
+        <div class="row" style="padding-top: 10px;">
+            <div class="col-sm text-center">
+                <h4 class="font-weight-bold">
+                    FTF (cage frequency)
+                </h4>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="freqPerMinuteforFTF" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="freqPerSecondforFTF" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="timeBetweenforFTF" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm text-center">
+                <h4 class="font-weight-bold">
+                    BSF (ball spin frequency)
+                </h4>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="freqPerMinuteforBSF" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="freqPerSecondforBSF" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="timeBetweenforBSF" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm text-center">
+                <h4 class="font-weight-bold">
+                    BPFO (outer race frequency)
+                </h4>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="freqPerMinuteforBPFO" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="freqPerSecondforBPFO" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="timeBetweenforBPFO" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm text-center">
+                <h4 class="font-weight-bold">
+                    BPFI (inner race frequency)
+                </h4>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="freqPerMinuteforBPFI" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="freqPerSecondforBPFI" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+            <div class="col-sm text-center" style="color:#002745;">
+                <p id="timeBetweenforBPFI" class="font-weight-bold">
+                    NAN
+                </p>
+            </div>
+        </div>  
+        <div class="row" style="margin-top: 35px;">
+            <div class="text-right col-sm">
+                <p style="color:#888888;">
+                    FTF is the number of times that the cage will rotate around in one revolution of the shaft
+                </p>
+                <p style="color:#888888;">
+                    BSF is the number of times each rolling element will complete one revolution per revolution of the shaft
+                </p>
+                <p style="color:#888888;">
+                    BPFO is the number of time a rolling element will pass over a given point on the outer race per one revolution of the shaft
+                </p>
+                <p style="color:#888888;">
+                    BPFI is the number of times a rolling element will pass over a given poin on the inner race per one revolution of the shaft
+                </p>
+            </div>
+        </div>
+      </div>
+
+      
+
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </body>
+</html>
