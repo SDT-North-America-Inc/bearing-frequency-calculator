@@ -184,10 +184,7 @@
         </div>
       </div>
 
-      
-
-      <p id="demo">hello</p>
-
+  
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -200,11 +197,10 @@
         var inputBSF;
         var inputBPFO;
         var inputBPFI;
-        var x = 500 * 4;
+       
+
+
         var freqPerMinuteforFTF = inputShaftRPM * inputFTF;
-
-        document.getElementById("freqPerMinuteforFTF").innerHTML = freqPerMinuteforFTF;
-
         var freqPerSecondforFTF = freqPerMinuteforFTF / inputFTF;
         var timeBetweenforFTF = 1 / freqPerSecondforFTF;
         var freqPerMinuteforBSF = inputShaftRPM * inputBSF;
@@ -221,17 +217,31 @@
 
 
 
-      
-
-
-
-
-
-
         function getInput() {
     var inputShaftRPM = document.getElementById('inputShaftRPM').value;
+   /* var inputFTF = document.getElementById('inputFTF').value;
+    var inputBSF = document.getElementById('inputBSF').value;
+    var inputBPFI = document.getElementById('inputBSF').value;*/
 }  
 
+
+
+
+
+var freqPerMinuteforFTF = function (){
+    return (document.getElementById("inputShaftRPM").value/2)
+}
+
+
+function calculation() {   
+document.getElementById('display').innerHTML = freqPerMinuteforFTF();       
+}
+
+
+
     </script>
+
+
+
   </body>
 </html>
