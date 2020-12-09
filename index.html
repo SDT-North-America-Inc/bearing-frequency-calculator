@@ -86,7 +86,7 @@
             </div>
             <div class="col-sm text-center" style="color:#002745;">
                 <p id="freqPerMinuteforFTF" class="font-weight-bold">
-                    NAN
+                    
                 </p>
             </div>
             <div class="col-sm text-center" style="color:#002745;">
@@ -186,11 +186,52 @@
 
       
 
-
+      <p id="demo">hello</p>
 
 
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    
+    <script>
+
+        var inputShaftRPM;
+        var inputFTF;
+        var inputBSF;
+        var inputBPFO;
+        var inputBPFI;
+        var x = 500 * 4;
+        var freqPerMinuteforFTF = inputShaftRPM * inputFTF;
+
+        document.getElementById("freqPerMinuteforFTF").innerHTML = freqPerMinuteforFTF;
+
+        var freqPerSecondforFTF = freqPerMinuteforFTF / inputFTF;
+        var timeBetweenforFTF = 1 / freqPerSecondforFTF;
+        var freqPerMinuteforBSF = inputShaftRPM * inputBSF;
+        var freqPerSecondforBSF = freqPerMinuteforBSF / inputFTF;
+        var timeBetweenforBSF = 1 / freqPerSecondforBSF;
+        var freqPerMinuteforBPFO = inputShaftRPM * inputBPFO;
+        var freqPerSecondforBPFO = freqPerMinuteforBPFO / inputFTF;
+        var timeBetweenforBPFO = 1 / freqPerSecondforBPFO;
+        var freqPerMinuteforBPFI = inputShaftRPM * inputBPFI;
+        var freqPerSecondforBPFI = freqPerMinuteforBPFI / inputFTF;
+        var timeBetweenforBPFI = 1 / freqPerSecondforBPFI;
+
+
+
+
+
+      
+
+
+
+
+
+
+        function getInput() {
+    var inputShaftRPM = document.getElementById('inputShaftRPM').value;
+}  
+
+    </script>
   </body>
 </html>
