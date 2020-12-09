@@ -213,7 +213,7 @@
         timeBetweenforBSF = document.getElementById('timeBetweenforBSF');
 
         freqPerMinuteforBPFO = document.getElementById('freqPerMinuteforBPFO');
-        freqPerSecondforBPFO = document.getElementById('timeBetweenforBPFO');
+        freqPerSecondforBPFO = document.getElementById('freqPerSecondforBPFO');
         timeBetweenforBPFO = document.getElementById('timeBetweenforBPFO');
 
         freqPerMinuteforBPFI = document.getElementById('freqPerMinuteforBPFI');
@@ -223,14 +223,14 @@
 
         console.log(inputShaftRPM.value, inputFTF.value, inputBSF.value, inputBPFO.value, inputBPFI.value)
 
-        freqPerMinuteforFTF.innerHTML = inputShaftRPM.value * inputFTF.value;
-        freqPerMinuteforBSF.innerHTML = inputShaftRPM.value * inputBSF.value;
-        freqPerMinuteforBPFO.innerHTML = inputShaftRPM.value * inputBPFO.value;
-        freqPerMinuteforBPFI.innerHTML = inputShaftRPM.value * inputBPFI.value;
+        freqPerMinuteforFTF.innerHTML = (inputShaftRPM.value * inputFTF.value).toFixed(3);
+        freqPerMinuteforBSF.innerHTML = (inputShaftRPM.value * inputBSF.value).toFixed(3);
+        freqPerMinuteforBPFO.innerHTML = (inputShaftRPM.value * inputBPFO.value).toFixed(3);
+        freqPerMinuteforBPFI.innerHTML = (inputShaftRPM.value * inputBPFI.value).toFixed(3);
 
         freqPerSecondforFTF.innerHTML = (freqPerMinuteforFTF.innerHTML/60).toFixed(3);
         freqPerSecondforBSF.innerHTML = (freqPerMinuteforBSF.innerHTML/60).toFixed(3);  
-        freqPerSecondforBPFO.innerHTML = (freqPerMinuteforBPFO.value/60).toFixed(3);
+        freqPerSecondforBPFO.innerHTML = (freqPerMinuteforBPFO.innerHTML/60).toFixed(3);
         freqPerSecondforBPFI.innerHTML = (freqPerMinuteforBPFI.innerHTML/60).toFixed(3);
 
         timeBetweenforFTF.innerHTML = (1/freqPerSecondforFTF.innerHTML).toFixed(3);
@@ -242,10 +242,10 @@
 
 
         calculateBTN.addEventListener('click', function() {
-            freqPerMinuteforFTF.innerHTML = inputShaftRPM.value * inputFTF.value;
-            freqPerMinuteforBSF.innerHTML = inputShaftRPM.value * inputBSF.value;
-            freqPerMinuteforBPFO.innerHTML = inputShaftRPM.value * inputBPFO.value;
-            freqPerMinuteforBPFI.innerHTML = inputShaftRPM.value * inputBPFI.value;
+            freqPerMinuteforFTF.innerHTML = (inputShaftRPM.value * inputFTF.value).toFixed(3);
+            freqPerMinuteforBSF.innerHTML = (inputShaftRPM.value * inputBSF.value).toFixed(3);
+            freqPerMinuteforBPFO.innerHTML = (inputShaftRPM.value * inputBPFO.value).toFixed(3);
+            freqPerMinuteforBPFI.innerHTML = (inputShaftRPM.value * inputBPFI.value).toFixed(3);
 
             freqPerSecondforFTF.innerHTML = (freqPerMinuteforFTF.innerHTML/60).toFixed(3);
             freqPerSecondforBSF.innerHTML = (freqPerMinuteforBSF.innerHTML/60).toFixed(3);
