@@ -26,7 +26,7 @@
         <div class="row" style="margin-top: 35px;">
             <div class="col-sm">
                 <label for="inputShaftRPM" class="form-label">Shaft Turning Speed (RPM)</label>
-                <input type="text" class="form-control" id="inputShaftRPM" name="inputShaftRPM" value="425">      
+                <input type="text" class="form-control" id="inputShaftRPM" name="inputShaftRPM" value="500">      
             </div>
 
             <div class="col-sm">
@@ -52,7 +52,7 @@
 
         <div class="row" style="margin-top: 35px;">
             <div class="col-sm text-left">
-                <button type="submit" class="btn btn-primary">Calculate</button>
+                <button id="calculateBTN" type="submit" class="btn btn-primary">Calculate</button>
             </div>
         </div>
 
@@ -86,7 +86,7 @@
             </div>
             <div class="col-sm text-center" style="color:#002745;">
                 <p id="freqPerMinuteforFTF" class="font-weight-bold">
-                    
+                    NAN
                 </p>
             </div>
             <div class="col-sm text-center" style="color:#002745;">
@@ -192,50 +192,74 @@
     
     <script>
 
-        var inputShaftRPM;
-        var inputFTF;
-        var inputBSF;
-        var inputBPFO;
-        var inputBPFI;
-       
-
-
-        var freqPerMinuteforFTF = inputShaftRPM * inputFTF;
-        var freqPerSecondforFTF = freqPerMinuteforFTF / inputFTF;
-        var timeBetweenforFTF = 1 / freqPerSecondforFTF;
-        var freqPerMinuteforBSF = inputShaftRPM * inputBSF;
-        var freqPerSecondforBSF = freqPerMinuteforBSF / inputFTF;
-        var timeBetweenforBSF = 1 / freqPerSecondforBSF;
-        var freqPerMinuteforBPFO = inputShaftRPM * inputBPFO;
-        var freqPerSecondforBPFO = freqPerMinuteforBPFO / inputFTF;
-        var timeBetweenforBPFO = 1 / freqPerSecondforBPFO;
-        var freqPerMinuteforBPFI = inputShaftRPM * inputBPFI;
-        var freqPerSecondforBPFI = freqPerMinuteforBPFI / inputFTF;
-        var timeBetweenforBPFI = 1 / freqPerSecondforBPFI;
+        var inputShaftRPM, inputFTF, inputBSF, inputBPFO, inputBPFI, freqPerMinuteforFTF, freqPerSecondforFTF, timeBetweenforFTF, freqPerMinuteforBSF , freqPerSecondforBSF, timeBetweenforBSF, freqPerMinuteforBPFO, freqPerSecondforBPFO, timeBetweenforBPFO, freqPerMinuteforBPFI, freqPerSecondforBPFI, timeBetweenforBPFI, calculateBTN; 
 
 
 
+        inputShaftRPM = document.getElementById('inputShaftRPM');
+        inputFTF = document.getElementById('inputFTF');
+        inputBSF = document.getElementById('inputBSF');
+        inputBPFO = document.getElementById('inputBPFO');
+        inputBPFI = document.getElementById('inputBPFI');
+
+        calculateBTN = document.getElementById('calculateBTN');
+
+        freqPerMinuteforFTF = document.getElementById('freqPerMinuteforFTF');
+        freqPerSecondforFTF = document.getElementById('freqPerSecondforFTF');
+        timeBetweenforFTF = document.getElementById('timeBetweenforFTF');
+
+        freqPerMinuteforBSF = document.getElementById('freqPerMinuteforBSF');
+        freqPerSecondforBSF = document.getElementById('freqPerSecondforBSF');
+        timeBetweenforBSF = document.getElementById('timeBetweenforBSF');
+
+        freqPerMinuteforBPFO = document.getElementById('freqPerMinuteforBPFO');
+        freqPerSecondforBPFO = document.getElementById('timeBetweenforBPFO');
+        timeBetweenforBPFO = document.getElementById('timeBetweenforBPFO');
+
+        freqPerMinuteforBPFI = document.getElementById('freqPerMinuteforBPFI');
+        freqPerSecondforBPFI = document.getElementById('freqPerSecondforBPFI');
+        timeBetweenforBPFI = document.getElementById('timeBetweenforBPFI');
 
 
-        function getInput() {
-    var inputShaftRPM = document.getElementById('inputShaftRPM').value;
-   /* var inputFTF = document.getElementById('inputFTF').value;
-    var inputBSF = document.getElementById('inputBSF').value;
-    var inputBPFI = document.getElementById('inputBSF').value;*/
-}  
+        console.log(inputShaftRPM.value, inputFTF.value, inputBSF.value, inputBPFO.value, inputBPFI.value)
+
+        freqPerMinuteforFTF.innerHTML = inputShaftRPM.value * inputFTF.value;
+        freqPerMinuteforBSF.innerHTML = inputShaftRPM.value * inputBSF.value;
+        freqPerMinuteforBPFO.innerHTML = inputShaftRPM.value * inputBPFO.value;
+        freqPerMinuteforBPFI.innerHTML = inputShaftRPM.value * inputBPFI.value;
+
+        freqPerSecondforFTF.innerHTML = (freqPerMinuteforFTF.innerHTML/60).toFixed(3);
+        freqPerSecondforBSF.innerHTML = (freqPerMinuteforBSF.innerHTML/60).toFixed(3);  
+        freqPerSecondforBPFO.innerHTML = (freqPerMinuteforBPFO.value/60).toFixed(3);
+        freqPerSecondforBPFI.innerHTML = (freqPerMinuteforBPFI.innerHTML/60).toFixed(3);
+
+        timeBetweenforFTF.innerHTML = (1/freqPerSecondforFTF.innerHTML).toFixed(3);
+        timeBetweenforBSF.innerHTML = (1/freqPerSecondforBSF.innerHTML).toFixed(3);
+        timeBetweenforBPFO.innerHTML = (1/freqPerSecondforBPFO.innerHTML).toFixed(3);
+        timeBetweenforBPFI.innerHTML = (1/freqPerSecondforBPFI.innerHTML).toFixed(3);
 
 
 
 
+        calculateBTN.addEventListener('click', function() {
+            freqPerMinuteforFTF.innerHTML = inputShaftRPM.value * inputFTF.value;
+            freqPerMinuteforBSF.innerHTML = inputShaftRPM.value * inputBSF.value;
+            freqPerMinuteforBPFO.innerHTML = inputShaftRPM.value * inputBPFO.value;
+            freqPerMinuteforBPFI.innerHTML = inputShaftRPM.value * inputBPFI.value;
 
-var freqPerMinuteforFTF = function (){
-    return (document.getElementById("inputShaftRPM").value/2)
-}
+            freqPerSecondforFTF.innerHTML = (freqPerMinuteforFTF.innerHTML/60).toFixed(3);
+            freqPerSecondforBSF.innerHTML = (freqPerMinuteforBSF.innerHTML/60).toFixed(3);
+            freqPerSecondforBPFO.innerHTML = (freqPerMinuteforBPFO.innerHTML/60).toFixed(3);
+            freqPerSecondforBPFI.innerHTML = (freqPerMinuteforBPFI.innerHTML/60).toFixed(3); 
+
+            timeBetweenforFTF.innerHTML = (1/freqPerSecondforFTF.innerHTML).toFixed(3);
+            timeBetweenforBSF.innerHTML = (1/freqPerSecondforBSF.innerHTML).toFixed(3);
+            timeBetweenforBPFO.innerHTML = (1/freqPerSecondforBPFO.innerHTML).toFixed(3);
+            timeBetweenforBPFI.innerHTML = (1/freqPerSecondforBPFI.innerHTML).toFixed(3);
+
+        })
 
 
-function calculation() {   
-document.getElementById('display').innerHTML = freqPerMinuteforFTF();       
-}
 
 
 
